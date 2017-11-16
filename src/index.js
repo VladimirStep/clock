@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Clock from './clock.js';
+import WorldClock from './world_clock.js';
 import './index.css';
 
 ReactDOM.render(
-    <Clock />,
+    <WorldClock />,
     document.getElementById('root')
 );
