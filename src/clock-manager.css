@@ -1,0 +1,8 @@
+.clock-manager {
+    width: 20%;
+    background-color: #dadada;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
