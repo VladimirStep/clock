@@ -1,5 +1,6 @@
 import React from 'react';
-import Clock from 'react-clock';
+import Clock from 'react-clock/build/entry.nostyle';
+import './clock-item.css'
 
 class ClockItem extends React.Component {
     state = {
@@ -15,8 +16,9 @@ class ClockItem extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='clock-container'>
                 <Clock
+                    size='200'
                     value={this.state.date}
                 />
                 <p>Local time</p>
