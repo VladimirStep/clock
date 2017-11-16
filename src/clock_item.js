@@ -18,7 +18,7 @@ class ClockItem extends React.Component {
         return (
             <div className='clock-container'>
                 <Clock
-                    size='200'
+                    size={200}
                     value={this.state.date}
                 />
                 <p>Local time</p>
