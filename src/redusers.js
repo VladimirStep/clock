@@ -8,12 +8,12 @@ const initialState = {
     clocksList: ['Europe/Kiev']
 };
 
-export default function clockApp(state = initialState, action) {
+function clockApp(state = initialState, action) {
     switch (action.type) {
         case ADD_CLOCK:
-            const newClocksList = state.clocksList.concat(timezone);
+            const newClocksList = state.clocksList.concat(action.timezone);
             const newZonesList = state.zonesList.filter(function(zone) {
-                return zone !== timezone;
+                return zone !== action.timezone;
             });
             return Object.assign({}, state, {
                     clocksList: newClocksList,
@@ -24,3 +24,5 @@ export default function clockApp(state = initialState, action) {
             return state;
     }
 }
+
+export default clockApp;
