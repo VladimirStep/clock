@@ -29,7 +29,6 @@ class ClockManager extends React.Component {
                     <label htmlFor='timezone-select'>
                         Select timezone:
                     </label>
-                    <br/>
                     <select
                         id='timezone-select'
                         value={this.state.value}

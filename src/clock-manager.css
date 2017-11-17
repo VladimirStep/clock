@@ -6,3 +6,25 @@
     align-items: center;
     justify-content: flex-start;
 }
+.clock-manager form {
+    margin: 0 40px;
+}
+.clock-manager form select, input {
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+}
+.clock-manager form select {
+    background-color: #f5f5f5;
+}
+.clock-manager form input[type=submit] {
+    cursor: pointer;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #6495ed;
+}
+.clock-manager form input[type=submit]:hover {
+    background-color: #5a89d9;
+}
