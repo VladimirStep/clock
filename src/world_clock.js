@@ -12,14 +12,28 @@ class WorldClock extends React.Component {
                 return zone !== 'Europe/Kiev';
             }),
             clocksList: ['Europe/Kiev']
-        }
+        };
+
+        this.addNewClock = this.addNewClock.bind(this);
+    }
+
+    addNewClock(timezone) {
+        this.setState(function(prevState) {
+            const newClocksList = prevState.clocksList.concat(timezone);
+            return {
+                clocksList: newClocksList
+            };
+        });
     }
 
     render() {
         return (
             <div className='world-clock'>
                 <ClockList clocks={this.state.clocksList}/>
-                <ClockManager zones={this.state.zonesList}/>
+                <ClockManager
+                    zones={this.state.zonesList}
+                    onAddClockSubmit={this.addNewClock}
+                />
             </div>
         );
     }
