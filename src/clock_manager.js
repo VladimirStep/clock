@@ -1,11 +1,10 @@
 import React from 'react';
-import moment from 'moment-timezone';
 import './clock-manager.css';
 
 class ClockManager extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {value: 'Europe/Kiev'};
+        this.state = {value: ''};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,8 +19,6 @@ class ClockManager extends React.Component {
     }
 
     render() {
-        const zones = moment.tz.names();
-
         return (
             <div className='clock-manager'>
                 <h3>TimeZone selector</h3>
@@ -34,7 +31,7 @@ class ClockManager extends React.Component {
                         value={this.state.value}
                         onChange={this.handleChange}
                     >
-                        {zones.map((zone, index) =>
+                        {this.props.zones.map((zone, index) =>
                             <option key={index.toString()} value={zone}>
                                 {zone}
                             </option>

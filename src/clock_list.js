@@ -8,7 +8,9 @@ class ClockList extends React.Component {
             <div className='clock-list'>
                 <h1>World Clock</h1>
                 <div className='list-wrapper'>
-                    <ClockItem />
+                    {this.props.clocks.map((zone, index) =>
+                        <ClockItem key={index.toString()} timezone={zone} />
+                    )}
                 </div>
             </div>
         );

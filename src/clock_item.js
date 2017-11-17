@@ -1,15 +1,23 @@
 import React from 'react';
 import Clock from 'react-clock';
+import moment from 'moment-timezone';
 import './clock-item.css'
 
 class ClockItem extends React.Component {
-    state = {
-        date: new Date(),
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            date: this.calculateTime()
+        };
+    }
+
+    calculateTime(timezone) {
+        return new Date(moment.tz(this.props.timezone));
+    }
 
     componentDidMount() {
         setInterval(
-            () => this.setState({ date: new Date() }),
+            () => this.setState({ date: this.calculateTime() }),
             1000
         );
     }
@@ -21,7 +29,7 @@ class ClockItem extends React.Component {
                     size={200}
                     value={this.state.date}
                 />
-                <p>Local time</p>
+                <p>{this.props.timezone}</p>
             </div>
         );
     }
