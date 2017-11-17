@@ -4,10 +4,14 @@ import './clock-manager.css';
 class ClockManager extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {value: this.props.zones[0]};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({value: nextProps.zones[0]});
     }
 
     handleChange(event) {

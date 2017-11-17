@@ -20,8 +20,12 @@ class WorldClock extends React.Component {
     addNewClock(timezone) {
         this.setState(function(prevState) {
             const newClocksList = prevState.clocksList.concat(timezone);
+            const newZonesList = prevState.zonesList.filter(function(zone) {
+                return zone !== timezone;
+            });
             return {
-                clocksList: newClocksList
+                clocksList: newClocksList,
+                zonesList: newZonesList
             };
         });
     }
