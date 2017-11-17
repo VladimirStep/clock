@@ -1,5 +1,5 @@
 import React from 'react';
-import Clock from 'react-clock/build/entry.nostyle';
+import Clock from 'react-clock';
 import './clock-item.css'
 
 class ClockItem extends React.Component {
