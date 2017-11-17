@@ -11,8 +11,8 @@ class ClockItem extends React.Component {
         };
     }
 
-    calculateTime(timezone) {
-        return new Date(moment.tz(this.props.timezone));
+    calculateTime() {
+        return new Date(moment.tz(this.props.timezone).format("YYYY-MM-DD HH:mm:ss"));
     }
 
     componentDidMount() {
