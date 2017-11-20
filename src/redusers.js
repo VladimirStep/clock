@@ -1,5 +1,5 @@
 import moment from 'moment-timezone';
-import { ADD_CLOCK } from "./actions";
+import {ADD_CLOCK, REMOVE_CLOCK} from "./actions";
 
 const defaultZone = 'Europe/Kiev';
 
@@ -13,13 +13,23 @@ const initialState = {
 function clockApp(state = initialState, action) {
     switch (action.type) {
         case ADD_CLOCK:
-            const clocksList = state.clocksList.concat(action.timezone);
-            const zonesList = state.zonesList.filter(function(zone) {
+            const clocksListAddedItem = state.clocksList.concat(action.timezone);
+            const zonesListRemovedItem = state.zonesList.filter(function(zone) {
                 return zone !== action.timezone;
             });
             return Object.assign({}, state, {
-                    clocksList,
-                    zonesList
+                    clocksList: clocksListAddedItem,
+                    zonesList: zonesListRemovedItem
+                }
+            );
+        case REMOVE_CLOCK:
+            const zonesListAddedItem = state.zonesList.concat(action.timezone);
+            const clocksListRemovedItem = state.clocksList.filter(function(zone) {
+                return zone !== action.timezone;
+            });
+            return Object.assign({}, state, {
+                    clocksList: clocksListRemovedItem,
+                    zonesList: zonesListAddedItem
                 }
             );
         default:

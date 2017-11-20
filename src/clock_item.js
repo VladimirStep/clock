@@ -2,6 +2,8 @@ import React from 'react';
 import Clock from 'react-clock';
 import moment from 'moment-timezone';
 import './clock-item.css'
+import { connect } from "react-redux";
+import { removeClock } from "./actions";
 
 class ClockItem extends React.Component {
     constructor(props) {
@@ -9,6 +11,7 @@ class ClockItem extends React.Component {
         this.state = {
             date: this.calculateTime()
         };
+        this.handleClick = this.handleClick.bind(this);
     }
 
     calculateTime() {
@@ -22,9 +25,16 @@ class ClockItem extends React.Component {
         );
     }
 
+    handleClick() {
+        this.props.onRemoveClock(this.props.timezone);
+    }
+
     render() {
         return (
             <div className='clock-container'>
+                <div className='close' onClick={this.handleClick}>
+                    <span className='red'>&times;</span>
+                </div>
                 <Clock
                     size={200}
                     value={this.state.date}
@@ -35,4 +45,12 @@ class ClockItem extends React.Component {
     }
 }
 
-export default ClockItem;
+function mapDispatchToClockItemProps(dispatch) {
+    return {
+        onRemoveClock: timezone => dispatch(removeClock(timezone))
+    };
+}
+
+const ClockItemContainer = connect(null, mapDispatchToClockItemProps)(ClockItem);
+
+export default ClockItemContainer;

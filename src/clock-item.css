@@ -10,3 +10,13 @@
     font-size: 24px;
     font-weight: bold;
 }
+.clock-container div.close {
+    align-self: flex-end;
+    margin-right: 20px;
+}
+.clock-container div.close span.red {
+    color: #e3534f;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
