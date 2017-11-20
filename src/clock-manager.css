@@ -23,8 +23,8 @@
     cursor: pointer;
     color: #ffffff;
     text-decoration: none;
-    background-color: #6495ed;
+    background-color: #5a89d9;
 }
 .clock-manager form button[type=submit]:hover {
-    background-color: #5a89d9;
+    background-color: #5678c5;
 }
