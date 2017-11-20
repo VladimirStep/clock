@@ -19,10 +19,14 @@ class ClockItem extends React.Component {
     }
 
     componentDidMount() {
-        setInterval(
+        this.timer = setInterval(
             () => this.setState({ date: this.calculateTime() }),
             400
         );
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timer);
     }
 
     handleClick() {
