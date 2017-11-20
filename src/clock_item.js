@@ -18,7 +18,7 @@ class ClockItem extends React.Component {
     componentDidMount() {
         setInterval(
             () => this.setState({ date: this.calculateTime() }),
-            1000
+            400
         );
     }
 

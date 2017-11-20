@@ -1,5 +1,7 @@
 import React from 'react';
 import './clock-manager.css';
+import { connect } from "react-redux";
+import { addClock } from "./actions";
 
 class ClockManager extends React.Component {
     constructor(props) {
@@ -42,11 +44,28 @@ class ClockManager extends React.Component {
                             </option>
                         )}
                     </select>
-                    <input type="submit" value='Add Clock'/>
+                    <button type="submit">Add Clock</button>
                 </form>
             </div>
         );
     }
 }
 
-export default ClockManager;
+function mapStateToClockManagerProps(state) {
+    return {
+        zones: state.zonesList
+    };
+}
+
+function mapDispatchToClockManagerProps(dispatch) {
+    return {
+        onAddClockSubmit: timezone => dispatch(addClock(timezone))
+    };
+}
+
+const ClockManagerContainer = connect(
+    mapStateToClockManagerProps,
+    mapDispatchToClockManagerProps
+)(ClockManager);
+
+export default ClockManagerContainer;

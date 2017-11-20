@@ -1,6 +1,7 @@
 import React from 'react';
 import ClockItem from './clock_item.js'
 import './clock-list.css'
+import { connect } from "react-redux";
 
 class ClockList extends React.Component {
     render() {
@@ -17,4 +18,14 @@ class ClockList extends React.Component {
     }
 }
 
-export default ClockList;
+function mapStateToClockListProps(state) {
+    return {
+        clocks: state.clocksList
+    };
+}
+
+const ClockListContainer = connect(
+    mapStateToClockListProps
+)(ClockList);
+
+export default ClockListContainer;

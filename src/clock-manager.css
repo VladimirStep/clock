@@ -9,7 +9,7 @@
 .clock-manager form {
     margin: 0 40px;
 }
-.clock-manager form select, input {
+.clock-manager form select, button[type=submit] {
     margin-bottom: 20px;
     margin-top: 5px;
     border: none;
@@ -19,12 +19,12 @@
 .clock-manager form select {
     background-color: #f5f5f5;
 }
-.clock-manager form input[type=submit] {
+.clock-manager form button[type=submit] {
     cursor: pointer;
     color: #ffffff;
     text-decoration: none;
     background-color: #6495ed;
 }
-.clock-manager form input[type=submit]:hover {
+.clock-manager form button[type=submit]:hover {
     background-color: #5a89d9;
 }
