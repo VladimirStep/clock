@@ -1,11 +1,13 @@
 import moment from 'moment-timezone';
 import { ADD_CLOCK } from "./actions";
 
+const defaultZone = 'Europe/Kiev';
+
 const initialState = {
     zonesList: moment.tz.names().filter(function(zone) {
-        return zone !== 'Europe/Kiev';
+        return zone !== defaultZone;
     }),
-    clocksList: ['Europe/Kiev']
+    clocksList: [defaultZone]
 };
 
 function clockApp(state = initialState, action) {

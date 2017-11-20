@@ -1,43 +1,42 @@
 import React from 'react';
-import moment from 'moment-timezone';
+import { connect } from 'react-redux';
 import ClockList from './clock_list.js';
 import ClockManager from './clock_manager.js';
 import './world-clock.css'
+import { addClock } from "./actions";
 
 class WorldClock extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            zonesList: moment.tz.names().filter(function(zone) {
-                return zone !== 'Europe/Kiev';
-            }),
-            clocksList: ['Europe/Kiev']
+    mapStateToClockListProps(state) {
+        return {
+            clocks: state.clocksList
         };
-
-        this.addNewClock = this.addNewClock.bind(this);
     }
 
-    addNewClock(timezone) {
-        this.setState(function(prevState) {
-            const newClocksList = prevState.clocksList.concat(timezone);
-            const newZonesList = prevState.zonesList.filter(function(zone) {
-                return zone !== timezone;
-            });
-            return {
-                clocksList: newClocksList,
-                zonesList: newZonesList
-            };
-        });
+    mapStateToClockManagerProps(state) {
+        return {
+            zones: state.zonesList
+        };
+    }
+
+    mapDispatchToClockManagerProps(dispatch) {
+        return {
+            onAddClockSubmit: timezone => dispatch(addClock(timezone))
+        };
     }
 
     render() {
+        const ClockListContainer = connect(
+            this.mapStateToClockListProps
+        )(ClockList);
+        const ClockManagerContainer = connect(
+            this.mapStateToClockManagerProps,
+            this.mapDispatchToClockManagerProps
+        )(ClockManager);
+
         return (
             <div className='world-clock'>
-                <ClockList clocks={this.state.clocksList}/>
-                <ClockManager
-                    zones={this.state.zonesList}
-                    onAddClockSubmit={this.addNewClock}
-                />
+                <ClockListContainer />
+                <ClockManagerContainer />
             </div>
         );
     }
