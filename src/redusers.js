@@ -1,8 +1,7 @@
 import moment from 'moment-timezone';
 import {ADD_CLOCK, REMOVE_CLOCK} from "./actions";
 
-const defaultZone = 'Europe/Kiev';
-
+const defaultZone = moment.tz.guess();
 const zoneNames = moment.tz.names();
 
 const initialState = {
